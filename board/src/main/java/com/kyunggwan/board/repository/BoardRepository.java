@@ -14,5 +14,6 @@ public interface BoardRepository extends JpaRepository<BoardEntity, Integer> {
 	public List<BoardEntity> findTOP3ByBoardWriteDateAfterOrderByBoardLikesCountDesc(Date boardWriteDate);
 
 	public List<BoardEntity> findByOrderByBoardWriteDateDesc();
-	
+
+	public List<BoardEntity> findByBoardTitleContains(String boardTitle);
 }

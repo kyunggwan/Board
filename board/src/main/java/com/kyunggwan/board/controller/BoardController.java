@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,7 +16,7 @@ import com.kyunggwan.board.service.BoardService;
 @RestController
 @RequestMapping("/api/board")
 public class BoardController {
-	
+
 	@Autowired
 	BoardService boardService;
 
@@ -33,4 +34,10 @@ public class BoardController {
 	public ResponseDto<List<PopularSearchEntity>> getPopularSearchList() {
 		return boardService.getPopularSearchList();
 	}
+
+	@GetMapping("/search{boardTitle}")
+	public ResponseDto<List<BoardEntity>> getSearchList(@PathVariable("boardTitle") String title) {
+		return boardService.getSearchList(title);
+	}
+
 }

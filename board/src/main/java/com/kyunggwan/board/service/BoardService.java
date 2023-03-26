@@ -44,7 +44,6 @@ public class BoardService {
 			exception.printStackTrace();
 			return ResponseDto.setFailed("Database Error");
 		}
-
 		return ResponseDto.setSuccess("Success", boardList);
 	}
 
@@ -59,4 +58,16 @@ public class BoardService {
 		}
 		return ResponseDto.setSuccess("Success", popularSearchList);
 	}
+
+	public ResponseDto<List<BoardEntity>> getSearchList(String boardTitle) {
+		List<BoardEntity> boardList = new ArrayList<BoardEntity>();
+		try {
+			boardList = boardRepository.findByBoardTitleContains(boardTitle);
+		} catch (Exception exception) {
+			exception.printStackTrace();
+			return ResponseDto.setFailed("Database Error");
+		}
+		return ResponseDto.setSuccess("Success", boardList);
+	}
+
 }
