@@ -29,9 +29,9 @@ public class BoardEntity {
 	private String boardWriterEmail;
 	private String boardWriterProfile;
 	private String boardWriterNikname;
-	private String boardWriterDate;
+	private String boardWriteDate;
 	private int boardClickCount;
-	private int boardLikeCount;
+	private int boardLikesCount;
 	private int boardCommentCount;
 	
 }
