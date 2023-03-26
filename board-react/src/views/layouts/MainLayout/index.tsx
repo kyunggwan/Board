@@ -5,7 +5,6 @@ import { useEffect, useState } from 'react'
 import { useUserStore } from '../../../stores'
 import { useCookies } from 'react-cookie'
 import axios from 'axios'
-import { request } from 'http'
 
 export default function MainLayout() {
   
@@ -27,15 +26,13 @@ export default function MainLayout() {
  useEffect(() => {
   const token = cookies.token;
   if(token) getBoard(token);
- }, [user]);
+  else setBoardResponse('');
+ }, [cookies.token]);
 
   return (
     <>
         <Navigation />
-
-        {boardResponse ? (<BoardMain />) : (<Authentication />) }
-        
-        
+        {user ? (<BoardMain />) : (<Authentication />) }  
     </>
   )
 }
